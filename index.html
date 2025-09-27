@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simran Anjana Rajput – Portfolio</title>
+  <meta name="description" content="Portfolio for ISM 6225 – Application Development for Analytics" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-card">
+          <!-- If you have a photo, place it at assets/profile.jpg -->
+          <img class="avatar" src="assets/profile.jpg" alt="Profile photo (optional)" onerror="this.style.display='none'" />
+          <div>
+            <h1>Hi, I’m <span class="accent">Simran Anjana Rajput</span> 👋</h1>
+            <p>
+              I’m a <strong>Business/Data Analyst</strong> who enjoys turning messy data
+              into clear insights and clean dashboards. I work with
+              <strong>SQL, Python, Tableau, Power BI, and Snowflake</strong> and love
+              building simple UIs for analytics.
+            </p>
+            <p class="muted">
+              This site was created for ISM 6225 (GitHub Portfolio) and shows basic
+              HTML/CSS customization plus AI-assisted writing & layout.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section alt">
+      <div class="container">
+        <h2>Projects</h2>
+
+        <!-- Project Card 1 -->
+        <article class="card">
+          <div class="card-body">
+            <h3>Product Profitability Modeling</h3>
+            <p>
+              Logistic regression on historical sales to classify profitability and
+              a Tableau view to explain key drivers for pricing decisions.
+            </p>
+            <ul class="bullets">
+              <li>Stack: Python (pandas, scikit‑learn), SQL, Tableau</li>
+              <li>Outcome: clearer margin forecasts and pricing guidance</li>
+            </ul>
+            <div class="links">
+              <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME/product-profitability" target="_blank" rel="noopener">Repo</a>
+              <a class="btn ghost" href="https://github.com/YOUR_GITHUB_USERNAME/product-profitability/blob/main/README.md" target="_blank" rel="noopener">README</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="card">
+          <div class="card-body">
+            <h3>Sentiment Analysis API</h3>
+            <p>
+              A small FastAPI service that scores customer comments in real time; supports
+              roadmap decisions by surfacing trending feedback.
+            </p>
+            <ul class="bullets">
+              <li>Stack: Python, FastAPI, basic CNN, AWS EC2</li>
+              <li>Outcome: faster triage of user feedback</li>
+            </ul>
+            <div class="links">
+              <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME/sentiment-api" target="_blank" rel="noopener">Repo</a>
+              <a class="btn ghost" href="https://github.com/YOUR_GITHUB_USERNAME/sentiment-api/blob/main/README.md" target="_blank" rel="noopener">README</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="pill-grid">
+          <span class="pill">SQL</span>
+          <span class="pill">Python</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Snowflake</span>
+          <span class="pill">Git/GitHub</span>
+          <span class="pill">HTML/CSS</span>
+          <span class="pill">REST APIs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Best ways to reach me:</p>
+        <ul class="contact-list">
+          <li>📧 <a href="mailto:you@email.com">you@email.com</a></li>
+          <li>🔗 <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li>💻 <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Simran Anjana Rajput · Built for ISM 6225</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
