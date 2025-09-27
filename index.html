@@ -6,6 +6,33 @@
   <title>Simran Anjana Rajput – Portfolio</title>
   <meta name="description" content="Professional portfolio of Simran Anjana Rajput – Business & Data Analyst" />
   <link rel="stylesheet" href="assets/styles.css" />
+
+  <style>
+    /* Education layout + image styling */
+    .edu-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .edu-body {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .edu-img {
+      max-width: 150px;     /* never wider than 150px */
+      max-height: 100px;    /* never taller than 100px */
+      height: auto;         /* keeps aspect ratio */
+      width: auto;          /* keeps aspect ratio */
+      object-fit: contain;  /* makes sure full logo fits */
+      border-radius: 6px;   /* smooth corners */
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      background: #fff;     /* background behind transparent logos */
+      padding: 4px;         /* breathing space */
+    }
+  </style>
 </head>
 <body>
   <!-- Header / Navigation -->
@@ -226,8 +253,7 @@
     </article>
   </div>
 </section>
-
-
+  
     <!-- CERTIFICATIONS -->
     <section id="certs" class="section alt">
       <div class="container">
