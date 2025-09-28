@@ -5,32 +5,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simran Anjana Rajput – Portfolio</title>
   <meta name="description" content="Professional portfolio of Simran Anjana Rajput – Business & Data Analyst" />
-  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Typography (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Education layout + image styling */
-    .edu-card {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 1rem;
+    :root{
+      --bg:#0b1020; --bg-alt:#0e1428; --card:#121a36; --text:#e9ecf6;
+      --muted:#a7acc0; --accent:#7aa2ff; --accent2:#a17dff; --border:#2a3054;
+      --shadow:0 12px 28px rgba(0,0,0,.35);
     }
-    .edu-body {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(122,162,255,.12), transparent 60%),
+        radial-gradient(1000px 700px at 110% 10%, rgba(161,125,255,.12), transparent 60%),
+        linear-gradient(180deg,var(--bg),#0a0f1f 60%, #090e1c);
+      color:var(--text); line-height:1.65;
     }
-    .edu-img {
-      max-width: 150px;     /* never wider than 150px */
-      max-height: 100px;    /* never taller than 100px */
-      height: auto;         /* keeps aspect ratio */
-      width: auto;          /* keeps aspect ratio */
-      object-fit: contain;  /* makes sure full logo fits */
-      border-radius: 6px;   /* smooth corners */
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      background: #fff;     /* background behind transparent logos */
-      padding: 4px;         /* breathing space */
+    .container{max-width:1100px;margin:0 auto;padding:0 1.1rem}
+    section{scroll-margin-top:84px;} /* anchor offset */
+
+    /* Header / nav */
+    .site-header{
+      position:sticky;top:0;z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(10,14,28,.65); border-bottom:1px solid var(--border)
+    }
+    .nav{display:flex;gap:1.2rem;align-items:center;justify-content:center;padding:.85rem}
+    .nav a{
+      position:relative; text-decoration:none; color:var(--text); opacity:.92; font-weight:600;
+      letter-spacing:.2px; padding:.35rem .2rem; transition:opacity .2s ease;
+      font-family:Poppins,Inter,system-ui,sans-serif;
+    }
+    .nav a::after{
+      content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
+      transform:scaleX(0); transform-origin:left;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transition:transform .25s ease;
+      border-radius:2px;
+    }
+    .nav a:hover{opacity:1}
+    .nav a:hover::after{transform:scaleX(1)}
+
+    /* Sections / headings */
+    .section{padding:4rem 0}
+    .section.alt{background:var(--bg-alt); border-block:1px solid var(--border)}
+    h1,h2,h3{line-height:1.2;margin:0 0 .7rem; font-family:Poppins,Inter,sans-serif}
+    h1{font-size:2.15rem} h2{font-size:1.7rem} h3{font-size:1.2rem}
+    p{margin:.45rem 0} .muted{color:var(--muted)}
+    .accent{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text; background-clip:text; color:transparent
+    }
+    /* Section title underline */
+    h2{
+      position:relative; display:inline-block; padding-bottom:.25rem;
+    }
+    h2::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:3px; width:72px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      border-radius:2px; box-shadow:0 2px 8px rgba(122,162,255,.4);
+    }
+
+    /* Card */
+    .card{
+      background:
+        linear-gradient(#0000,#0000) padding-box,
+        linear-gradient(120deg, rgba(122,162,255,.4), rgba(161,125,255,.35)) border-box;
+      border:1px solid transparent; border-radius:18px; margin:1rem 0;
+      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      backdrop-filter:saturate(120%);
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 16px 42px rgba(0,0,0,.45)}
+    .card-body{padding:1.15rem}
+    .bullets{margin:.5rem 0 .25rem 1.2rem}
+    .bullets li{margin:.25rem 0}
+
+    /* Buttons */
+    .links{display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:wrap}
+    .btn{
+      position:relative; display:inline-block; text-decoration:none; color:var(--text); font-weight:700;
+      border:1px solid var(--accent); padding:.5rem .85rem; border-radius:12px; overflow:hidden;
+      transition:transform .15s ease,border-color .25s ease,background .25s ease;
+      will-change:transform;
+    }
+    .btn::before{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(200px 80px at var(--x,50%) var(--y,50%), rgba(122,162,255,.18), transparent 40%);
+      opacity:0; transition:opacity .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .btn:hover::before{opacity:1}
+    .btn.ghost{border-color:var(--border)}
+    .btn.ghost:hover{border-color:transparent}
+
+    /* About */
+    .about-card{
+      display:grid; grid-template-columns:180px 1fr; gap:1.1rem; align-items:center;
+      background:var(--card); border:1px solid var(--border); border-radius:18px; padding:1.1rem;
+      box-shadow:var(--shadow); overflow:hidden;
+    }
+    .avatar{
+      width:180px; height:180px; border-radius:50%; object-fit:cover; border:2px solid var(--border);
+      box-shadow:0 4px 14px rgba(0,0,0,.35); animation:float 8s ease-in-out infinite;
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}
+    }
+    .links-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+
+    /* Skills */
+    .pill-grid{display:flex;flex-wrap:wrap;gap:.55rem;margin: .4rem 0 1.1rem}
+    .pill{
+      border:1px solid var(--border); padding:.4rem .7rem; border-radius:999px;
+      background:rgba(255,255,255,.02); position:relative; overflow:hidden; cursor:default;
+      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .pill:hover{
+      transform:translateY(-1px); border-color:rgba(122,162,255,.6);
+      box-shadow:0 6px 16px rgba(122,162,255,.18);
+    }
+    .pill:active{transform:translateY(0)}
+
+    /* Education images */
+    .edu-card{display:flex;flex-direction:row;align-items:center;margin-bottom:1rem}
+    .edu-body{display:flex;align-items:center;gap:1rem}
+    .edu-img{
+      max-width:150px; max-height:100px; height:auto; width:auto; object-fit:contain;
+      border-radius:6px; border:1px solid var(--border); box-shadow:0 2px 6px rgba(0,0,0,.2);
+      background:#fff; padding:4px;
+    }
+
+    /* Footer */
+    .site-footer{padding:2rem 0;text-align:center;color:var(--muted);border-top:1px solid var(--border)}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1; transform:translateY(0)}
+
+    /* Accessibility: reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+      html{scroll-behavior:auto}
+      .reveal{opacity:1; transform:none}
+    }
+
+    /* Responsive */
+    @media (max-width:720px){
+      .about-card{grid-template-columns:1fr}
+      .avatar{width:140px;height:140px;justify-self:center}
+      h1{font-size:1.85rem}
     }
   </style>
 </head>
@@ -52,10 +183,8 @@
     <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
-        <div class="about-card">
-          <!-- Profile photo -->
-      <img class="avatar" src="simran.jpg" alt="Simran Anjana Rajput" />
-
+        <div class="about-card reveal">
+          <img class="avatar" src="simran.jpg" alt="Simran Anjana Rajput" />
           <div>
             <h1>Hi, I’m <span class="accent">Simran Anjana Rajput</span> 👋</h1>
             <p>
@@ -83,7 +212,7 @@
       <div class="container">
         <h2>Experience</h2>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>Data Engineer Intern</h3>
             <p><em>Starter You – Remote | Jun 2025 – Aug 2025</em></p>
@@ -96,7 +225,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>Senior Data &amp; Reporting Analyst</h3>
             <p><em>Tech Mahindra – Australian Unity | Nov 2022 – Jul 2024</em></p>
@@ -109,7 +238,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>Technical Support Analyst – Hosting &amp; Data Systems</h3>
             <p><em>Genpact – GoDaddy | Apr 2020 – Nov 2022</em></p>
@@ -121,7 +250,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>Data Operations Associate</h3>
             <p><em>D&amp;C Solutions | Jun 2019 – May 2020</em></p>
@@ -139,7 +268,7 @@
       <div class="container">
         <h2>Projects</h2>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>Product Profitability Modeling</h3>
             <p>Logistic regression to classify product profitability; cleaned historical data and visualized drivers in Tableau.</p>
@@ -153,7 +282,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>Sentiment Analysis API (Real-Time)</h3>
             <p>FastAPI service with a simple CNN for customer feedback classification; supports product roadmap prioritization.</p>
@@ -167,7 +296,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>MongoDB → Azure Data Pipeline</h3>
             <p>Designed and implemented a secure pipeline to migrate and back up MongoDB data into Azure Blob Storage with automation.</p>
@@ -180,8 +309,8 @@
             </div>
           </div>
         </article>
-        
-         <article class="card">
+
+        <article class="card reveal">
           <div class="card-body">
             <h3>Education &amp; AI Policy Dashboard</h3>
             <p>Integrated cross-country education policy datasets; built dashboards to visualize AI policy rollouts and adoption gaps.</p>
@@ -192,7 +321,7 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <div class="card-body">
             <h3>PostgreSQL Data Pipeline</h3>
             <p>Built an automated PostgreSQL → Azure pipeline for data backups and reporting, with secure transfer and monitoring.</p>
@@ -208,53 +337,91 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS (expanded & grouped) -->
     <section id="skills" class="section alt">
       <div class="container">
         <h2>Skills</h2>
+
+        <h3>Databases</h3>
         <div class="pill-grid">
-          <span class="pill">SQL</span>
-          <span class="pill">Python</span>
-          <span class="pill">Tableau</span>
-          <span class="pill">Power BI</span>
-          <span class="pill">Snowflake</span>
-          <span class="pill">Hadoop</span>
           <span class="pill">MongoDB</span>
           <span class="pill">PostgreSQL</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">Snowflake</span>
+        </div>
+
+        <h3>Programming &amp; Data</h3>
+        <div class="pill-grid">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Pandas</span>
+          <span class="pill">NumPy</span>
+          <span class="pill">Scikit-learn</span>
+          <span class="pill">ETL / Data Pipelines</span>
+        </div>
+
+        <h3>Data Visualization</h3>
+        <div class="pill-grid">
+          <span class="pill">Tableau</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Matplotlib</span>
+          <span class="pill">Seaborn</span>
+        </div>
+
+        <h3>Cloud &amp; Big Data</h3>
+        <div class="pill-grid">
           <span class="pill">Azure</span>
           <span class="pill">AWS</span>
-          <span class="pill">Git/GitHub</span>
+          <span class="pill">Hadoop</span>
+        </div>
+
+        <h3>Web &amp; APIs</h3>
+        <div class="pill-grid">
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">FastAPI</span>
+        </div>
+
+        <h3>Tools &amp; Workflow</h3>
+        <div class="pill-grid">
+          <span class="pill">Git</span>
+          <span class="pill">GitHub</span>
+          <span class="pill">Jira</span>
+          <span class="pill">Agile / Scrum</span>
+          <span class="pill">CI/CD</span>
+          <span class="pill">Testing / UAT</span>
         </div>
       </div>
     </section>
 
-   <!-- EDUCATION -->
-<section id="education" class="section">
-  <div class="container">
-    <h2>Education</h2>
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2>Education</h2>
 
-    <article class="card edu-card">
-      <div class="card-body edu-body">
-        <img src="usf.jpg" alt="University of South Florida" class="edu-img" />
-        <div>
-          <h3>Master of Science – Business Analytics &amp; AI</h3>
-          <p><em>University of South Florida – Pursuing | GPA: 3.8/4.0</em></p>
-        </div>
-      </div>
-    </article>
+        <article class="card edu-card reveal">
+          <div class="card-body edu-body">
+            <img src="usf.jpg" alt="University of South Florida" class="edu-img" />
+            <div>
+              <h3>Master of Science – Business Analytics &amp; AI</h3>
+              <p><em>University of South Florida – Pursuing | GPA: 3.8/4.0</em></p>
+            </div>
+          </div>
+        </article>
 
-    <article class="card edu-card">
-      <div class="card-body edu-body">
-        <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" />
-        <div>
-          <h3>B.E. – Computer Science &amp; Engineering</h3>
-          <p><em>Stanley College, Osmania University – Graduated Jul 2019 | GPA: 3.5/4.0</em></p>
-        </div>
+        <article class="card edu-card reveal">
+          <div class="card-body edu-body">
+            <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" />
+            <div>
+              <h3>B.E. – Computer Science &amp; Engineering</h3>
+              <p><em>Stanley College, Osmania University – Graduated Jul 2019 | GPA: 3.5/4.0</em></p>
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
-  </div>
-</section>
-  
+    </section>
+
     <!-- CERTIFICATIONS -->
     <section id="certs" class="section alt">
       <div class="container">
@@ -289,8 +456,30 @@
     </p>
   </footer>
 
+  <!-- Small script: button glow follows cursor + reveal-on-scroll -->
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Button spotlight effect
+    document.addEventListener('pointermove', e=>{
+      document.querySelectorAll('.btn').forEach(btn=>{
+        const r = btn.getBoundingClientRect();
+        btn.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        btn.style.setProperty('--y', (e.clientY - r.top) + 'px');
+      });
+    });
+
+    // Reveal on scroll (respect reduced motion)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduced && 'IntersectionObserver' in window){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(ent => { if(ent.isIntersecting){ ent.target.classList.add('in'); obs.unobserve(ent.target);} });
+      }, {threshold:.08});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    }
   </script>
 </body>
 </html>
