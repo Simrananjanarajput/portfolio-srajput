@@ -6,83 +6,86 @@
   <title>Simran Anjana Rajput – Portfolio</title>
   <meta name="description" content="Professional portfolio of Simran Anjana Rajput – Business & Data Analyst" />
 
-  <!-- Typography (Google Fonts) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b1020; --bg-alt:#0e1428; --card:#121a36; --text:#e9ecf6;
-      --muted:#a7acc0; --accent:#7aa2ff; --accent2:#a17dff; --border:#2a3054;
-      --shadow:0 12px 28px rgba(0,0,0,.35);
+      --bg:#0b1020; --bg2:#0a0e1f; --bg3:#0a0f22;
+      --bg-alt:#0e1428; --card:#121a36; --text:#e9ecf6; --muted:#a7acc0;
+      --accent:#7aa2ff; --accent2:#a17dff; --border:#2a3054; --shadow:0 12px 28px rgba(0,0,0,.35);
     }
-
-    /* Base */
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text); line-height:1.65;
       background:
         radial-gradient(1200px 600px at 10% -10%, rgba(122,162,255,.12), transparent 60%),
         radial-gradient(1000px 700px at 110% 10%, rgba(161,125,255,.12), transparent 60%),
-        linear-gradient(180deg,var(--bg),#0a0f1f 60%, #090e1c);
-      color:var(--text); line-height:1.65;
+        linear-gradient(180deg,var(--bg),var(--bg2) 60%, var(--bg3));
+      background-size:200% 200%;
+      animation:bgShift 30s ease infinite;
+    }
+    @keyframes bgShift{
+      0%,100%{background-position:0% 0%, 100% 0%, 0% 0%}
+      50%{background-position:100% 40%, 0% 10%, 100% 100%}
     }
     .container{max-width:1100px;margin:0 auto;padding:0 1.1rem}
-    section{scroll-margin-top:84px;} /* anchor offset */
+    section{scroll-margin-top:84px;}
+
+    /* Floating particles (pure CSS) */
+    .particles{position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.35}
+    .dot{position:absolute; width:4px; height:4px; border-radius:50%; background:linear-gradient(90deg,var(--accent),var(--accent2)); filter:blur(.2px); opacity:.6; animation:floatY 14s linear infinite}
+    .dot:nth-child(2){left:20%; animation-duration:18s; width:3px;height:3px}
+    .dot:nth-child(3){left:40%; animation-duration:22s}
+    .dot:nth-child(4){left:60%; animation-duration:16s}
+    .dot:nth-child(5){left:80%; animation-duration:19s; width:5px;height:5px}
+    @keyframes floatY{0%{transform:translateY(110vh)}100%{transform:translateY(-10vh)}}
 
     /* Header / nav */
     .site-header{
       position:sticky;top:0;z-index:50; backdrop-filter:saturate(180%) blur(10px);
       background:rgba(10,14,28,.65); border-bottom:1px solid var(--border)
     }
-    .nav{display:flex;gap:1.2rem;align-items:center;justify-content:center;padding:.85rem}
+    .progress{position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transform-origin:0 50%; transform:scaleX(0); transition:transform .1s linear}
+    .nav{display:flex;gap:1.2rem;align-items:center;justify-content:center;padding:.85rem; position:relative}
     .nav a{
       position:relative; text-decoration:none; color:var(--text); opacity:.92; font-weight:600;
       letter-spacing:.2px; padding:.35rem .2rem; transition:opacity .2s ease;
-      font-family:Poppins,Inter,system-ui,sans-serif;
+      font-family:Poppins,Inter,sans-serif;
     }
     .nav a::after{
       content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
-      transform:scaleX(0); transform-origin:left;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      transition:transform .25s ease;
-      border-radius:2px;
+      transform:scaleX(0); transform-origin:left; background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transition:transform .25s ease; border-radius:2px; box-shadow:0 2px 6px rgba(122,162,255,.45);
     }
     .nav a:hover{opacity:1}
-    .nav a:hover::after{transform:scaleX(1)}
+    .nav a:hover::after, .nav a.active::after{transform:scaleX(1)}
 
     /* Sections / headings */
-    .section{padding:4rem 0}
+    .section{padding:4rem 0; position:relative; z-index:1}
     .section.alt{background:var(--bg-alt); border-block:1px solid var(--border)}
     h1,h2,h3{line-height:1.2;margin:0 0 .7rem; font-family:Poppins,Inter,sans-serif}
-    h1{font-size:2.15rem} h2{font-size:1.7rem} h3{font-size:1.2rem}
+    h1{font-size:2.2rem} h2{font-size:1.7rem} h3{font-size:1.2rem}
     p{margin:.45rem 0} .muted{color:var(--muted)}
-    .accent{
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text; background-clip:text; color:transparent
-    }
-    /* Section title underline */
-    h2{
-      position:relative; display:inline-block; padding-bottom:.25rem;
-    }
-    h2::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:3px; width:72px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      border-radius:2px; box-shadow:0 2px 8px rgba(122,162,255,.4);
-    }
+    .accent{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    h2{position:relative; display:inline-block; padding-bottom:.25rem;}
+    h2::after{content:""; position:absolute; left:0; bottom:-6px; height:3px; width:72px; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; box-shadow:0 2px 8px rgba(122,162,255,.4)}
 
-    /* Card */
+    /* Card with animated border */
     .card{
-      background:
-        linear-gradient(#0000,#0000) padding-box,
-        linear-gradient(120deg, rgba(122,162,255,.4), rgba(161,125,255,.35)) border-box;
+      background:linear-gradient(#0000,#0000) padding-box, conic-gradient(from var(--angle,0deg), rgba(122,162,255,.55), rgba(161,125,255,.55), rgba(122,162,255,.55)) border-box;
       border:1px solid transparent; border-radius:18px; margin:1rem 0;
-      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      backdrop-filter:saturate(120%);
+      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease;
+      backdrop-filter:saturate(120%); animation:borderSpin 8s linear infinite;
     }
+    @property --angle{syntax:"<angle>"; inherits:false; initial-value:0deg;}
+    @keyframes borderSpin{to{--angle:360deg}}
     .card:hover{transform:translateY(-4px); box-shadow:0 16px 42px rgba(0,0,0,.45)}
     .card-body{padding:1.15rem}
     .bullets{margin:.5rem 0 .25rem 1.2rem}
@@ -93,18 +96,12 @@
     .btn{
       position:relative; display:inline-block; text-decoration:none; color:var(--text); font-weight:700;
       border:1px solid var(--accent); padding:.5rem .85rem; border-radius:12px; overflow:hidden;
-      transition:transform .15s ease,border-color .25s ease,background .25s ease;
-      will-change:transform;
+      transition:transform .15s ease,border-color .25s ease,background .25s ease; will-change:transform;
     }
-    .btn::before{
-      content:""; position:absolute; inset:0;
-      background:radial-gradient(200px 80px at var(--x,50%) var(--y,50%), rgba(122,162,255,.18), transparent 40%);
-      opacity:0; transition:opacity .2s ease;
-    }
+    .btn::before{content:""; position:absolute; inset:0; background:radial-gradient(200px 80px at var(--x,50%) var(--y,50%), rgba(122,162,255,.18), transparent 40%); opacity:0; transition:opacity .2s ease;}
     .btn:hover{transform:translateY(-1px); border-color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent2))}
     .btn:hover::before{opacity:1}
-    .btn.ghost{border-color:var(--border)}
-    .btn.ghost:hover{border-color:transparent}
+    .btn.ghost{border-color:var(--border)} .btn.ghost:hover{border-color:transparent}
 
     /* About */
     .about-card{
@@ -112,36 +109,20 @@
       background:var(--card); border:1px solid var(--border); border-radius:18px; padding:1.1rem;
       box-shadow:var(--shadow); overflow:hidden;
     }
-    .avatar{
-      width:180px; height:180px; border-radius:50%; object-fit:cover; border:2px solid var(--border);
-      box-shadow:0 4px 14px rgba(0,0,0,.35); animation:float 8s ease-in-out infinite;
-    }
-    @keyframes float{
-      0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}
-    }
-    .links-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
+    .avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:2px solid var(--border); box-shadow:0 4px 14px rgba(0,0,0,.35); animation:float 8s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}}
+    .role{min-height:1.4em; display:inline-block; border-right:2px solid rgba(255,255,255,.7); white-space:nowrap; overflow:hidden; }
 
     /* Skills */
-    .pill-grid{display:flex;flex-wrap:wrap;gap:.55rem;margin: .4rem 0 1.1rem}
-    .pill{
-      border:1px solid var(--border); padding:.4rem .7rem; border-radius:999px;
-      background:rgba(255,255,255,.02); position:relative; overflow:hidden; cursor:default;
-      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .pill:hover{
-      transform:translateY(-1px); border-color:rgba(122,162,255,.6);
-      box-shadow:0 6px 16px rgba(122,162,255,.18);
-    }
+    .pill-grid{display:flex;flex-wrap:wrap;gap:.55rem;margin:.4rem 0 1.1rem}
+    .pill{border:1px solid var(--border); padding:.4rem .7rem; border-radius:999px; background:rgba(255,255,255,.02); position:relative; overflow:hidden; cursor:default; transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease}
+    .pill:hover{transform:translateY(-1px); border-color:rgba(122,162,255,.6); box-shadow:0 6px 16px rgba(122,162,255,.18)}
     .pill:active{transform:translateY(0)}
 
     /* Education images */
     .edu-card{display:flex;flex-direction:row;align-items:center;margin-bottom:1rem}
     .edu-body{display:flex;align-items:center;gap:1rem}
-    .edu-img{
-      max-width:150px; max-height:100px; height:auto; width:auto; object-fit:contain;
-      border-radius:6px; border:1px solid var(--border); box-shadow:0 2px 6px rgba(0,0,0,.2);
-      background:#fff; padding:4px;
-    }
+    .edu-img{max-width:150px; max-height:100px; height:auto; width:auto; object-fit:contain; border-radius:6px; border:1px solid var(--border); box-shadow:0 2px 6px rgba(0,0,0,.2); background:#fff; padding:4px}
 
     /* Footer */
     .site-footer{padding:2rem 0;text-align:center;color:var(--muted);border-top:1px solid var(--border)}
@@ -149,33 +130,47 @@
     /* Reveal on scroll */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
     .reveal.in{opacity:1; transform:translateY(0)}
+    .reveal[data-delay="1"]{transition-delay:.05s}
+    .reveal[data-delay="2"]{transition-delay:.1s}
+    .reveal[data-delay="3"]{transition-delay:.15s}
 
-    /* Accessibility: reduce motion */
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       *{animation:none !important; transition:none !important}
       html{scroll-behavior:auto}
       .reveal{opacity:1; transform:none}
+      .progress{transition:none}
     }
 
     /* Responsive */
     @media (max-width:720px){
       .about-card{grid-template-columns:1fr}
       .avatar{width:140px;height:140px;justify-self:center}
-      h1{font-size:1.85rem}
+      h1{font-size:1.9rem}
     }
   </style>
 </head>
 <body>
+  <!-- Background particles -->
+  <div class="particles" aria-hidden="true">
+    <span class="dot" style="left:10%"></span>
+    <span class="dot" style="left:30%"></span>
+    <span class="dot" style="left:50%"></span>
+    <span class="dot" style="left:70%"></span>
+    <span class="dot" style="left:90%"></span>
+  </div>
+
   <!-- Header / Navigation -->
   <header class="site-header">
     <nav class="nav container">
-      <a href="#about">About</a>
+      <a href="#about" class="active">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
       <a href="#certs">Certifications</a>
       <a href="#contact">Contact</a>
+      <div class="progress" id="progress"></div>
     </nav>
   </header>
 
@@ -187,299 +182,10 @@
           <img class="avatar" src="simran.jpg" alt="Simran Anjana Rajput" />
           <div>
             <h1>Hi, I’m <span class="accent">Simran Anjana Rajput</span> 👋</h1>
+            <p class="muted"><span class="role" id="role"></span></p>
             <p>
               I’m a <strong>Business & Data Analyst</strong> with 4+ years of experience
               bridging business needs and technology solutions across healthcare,
               technology, and cloud domains. I translate requirements into
               <strong>automated reporting, ETL pipelines, and clear dashboards</strong>
-              using <strong>SQL, Python, Tableau, Power BI, and Snowflake</strong>.
-            </p>
-            <p class="muted">
-              Currently pursuing a <strong>Master’s in Business Analytics & AI</strong> at the University of South Florida.
-            </p>
-            <div class="links-row">
-              <a class="btn" href="mailto:shimrran05@gmail.com">Email</a>
-              <a class="btn ghost" href="https://github.com/Simrananjanarajput" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn ghost" href="https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section alt">
-      <div class="container">
-        <h2>Experience</h2>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Data Engineer Intern</h3>
-            <p><em>Starter You – Remote | Jun 2025 – Aug 2025</em></p>
-            <ul class="bullets">
-              <li>Automated CI/CD (GitHub Actions, Azure DevOps), cutting deployments from hours to <strong>&lt;15 minutes</strong>.</li>
-              <li>Optimized real-time data streams with Hadoop & Snowflake; increased throughput by <strong>50%</strong> and ensured <strong>99.9% uptime</strong>.</li>
-              <li>Deployed ML models for real-time predictions, reducing latency by <strong>20%</strong>.</li>
-              <li>Presented insights via <strong>Tableau</strong> and <strong>Power BI</strong> dashboards for non-technical stakeholders.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Senior Data &amp; Reporting Analyst</h3>
-            <p><em>Tech Mahindra – Australian Unity | Nov 2022 – Jul 2024</em></p>
-            <ul class="bullets">
-              <li>Designed ETL pipelines & dashboards for healthcare analytics and regulatory reporting (high-volume plan data).</li>
-              <li>Improved reporting accuracy by <strong>35%</strong> using SQL/Python data validation and QA checks.</li>
-              <li>Defined KPIs with cross-functional teams and delivered <strong>real-time compliance reports</strong>.</li>
-              <li>Automated Excel + SQL workflows, saving <strong>30%</strong> manual effort.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Technical Support Analyst – Hosting &amp; Data Systems</h3>
-            <p><em>Genpact – GoDaddy | Apr 2020 – Nov 2022</em></p>
-            <ul class="bullets">
-              <li>Built SQL monitoring for service trends & uptime; reduced incident resolution time by <strong>20%</strong>.</li>
-              <li>Developed <strong>Power BI</strong> dashboards for SLA tracking and anomaly detection.</li>
-              <li>Executed test plans and UAT; collaborated with dev teams to ensure quality releases.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Data Operations Associate</h3>
-            <p><em>D&amp;C Solutions | Jun 2019 – May 2020</em></p>
-            <ul class="bullets">
-              <li>Performed backend data cleanup & transformations for appointment and KYC systems.</li>
-              <li>Developed validation scripts and contributed to QA logs for compliance.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Projects</h2>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Product Profitability Modeling</h3>
-            <p>Logistic regression to classify product profitability; cleaned historical data and visualized drivers in Tableau.</p>
-            <ul class="bullets">
-              <li>Stack: Python (Pandas, scikit-learn), Tableau, SQL</li>
-              <li>Outcome: Enabled pricing teams to make margin-focused decisions.</li>
-            </ul>
-            <div class="links">
-              <a class="btn" href="https://github.com/Simrananjanarajput/product-profitability" target="_blank" rel="noopener">Repo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Sentiment Analysis API (Real-Time)</h3>
-            <p>FastAPI service with a simple CNN for customer feedback classification; supports product roadmap prioritization.</p>
-            <ul class="bullets">
-              <li>Stack: Python, FastAPI, CNN, AWS EC2</li>
-              <li>Outcome: Faster triage of user feedback and trend detection.</li>
-            </ul>
-            <div class="links">
-              <a class="btn" href="https://github.com/Simrananjanarajput/sentiment-api" target="_blank" rel="noopener">Repo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>MongoDB → Azure Data Pipeline</h3>
-            <p>Designed and implemented a secure pipeline to migrate and back up MongoDB data into Azure Blob Storage with automation.</p>
-            <ul class="bullets">
-              <li>Stack: MongoDB, Azure VM, Azure Blob Storage, Python, Bash</li>
-              <li>Outcome: Automated daily backups with retention policy, ensuring compliance and faster recovery.</li>
-            </ul>
-            <div class="links">
-              <a class="btn" href="https://github.com/Simrananjanarajput/mongodb-azure-pipeline" target="_blank" rel="noopener">Repo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>Education &amp; AI Policy Dashboard</h3>
-            <p>Integrated cross-country education policy datasets; built dashboards to visualize AI policy rollouts and adoption gaps.</p>
-            <ul class="bullets">
-              <li>Stack: SQL (Teradata), Python, Power BI, Tableau</li>
-              <li>Outcome: Supported academic and policy research insights.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-body">
-            <h3>PostgreSQL Data Pipeline</h3>
-            <p>Built an automated PostgreSQL → Azure pipeline for data backups and reporting, with secure transfer and monitoring.</p>
-            <ul class="bullets">
-              <li>Stack: PostgreSQL, pg_dump, Azure Storage, Python, AzCopy</li>
-              <li>Outcome: Enabled reliable daily backups and simplified reporting for analytics teams.</li>
-            </ul>
-            <div class="links">
-              <a class="btn" href="https://github.com/Simrananjanarajput/postgresql-pipeline" target="_blank" rel="noopener">Repo</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS (expanded & grouped) -->
-    <section id="skills" class="section alt">
-      <div class="container">
-        <h2>Skills</h2>
-
-        <h3>Databases</h3>
-        <div class="pill-grid">
-          <span class="pill">MongoDB</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">MySQL</span>
-          <span class="pill">Snowflake</span>
-        </div>
-
-        <h3>Programming &amp; Data</h3>
-        <div class="pill-grid">
-          <span class="pill">Python</span>
-          <span class="pill">SQL</span>
-          <span class="pill">Pandas</span>
-          <span class="pill">NumPy</span>
-          <span class="pill">Scikit-learn</span>
-          <span class="pill">ETL / Data Pipelines</span>
-        </div>
-
-        <h3>Data Visualization</h3>
-        <div class="pill-grid">
-          <span class="pill">Tableau</span>
-          <span class="pill">Power BI</span>
-          <span class="pill">Matplotlib</span>
-          <span class="pill">Seaborn</span>
-        </div>
-
-        <h3>Cloud &amp; Big Data</h3>
-        <div class="pill-grid">
-          <span class="pill">Azure</span>
-          <span class="pill">AWS</span>
-          <span class="pill">Hadoop</span>
-        </div>
-
-        <h3>Web &amp; APIs</h3>
-        <div class="pill-grid">
-          <span class="pill">HTML</span>
-          <span class="pill">CSS</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">FastAPI</span>
-        </div>
-
-        <h3>Tools &amp; Workflow</h3>
-        <div class="pill-grid">
-          <span class="pill">Git</span>
-          <span class="pill">GitHub</span>
-          <span class="pill">Jira</span>
-          <span class="pill">Agile / Scrum</span>
-          <span class="pill">CI/CD</span>
-          <span class="pill">Testing / UAT</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <div class="container">
-        <h2>Education</h2>
-
-        <article class="card edu-card reveal">
-          <div class="card-body edu-body">
-            <img src="usf.jpg" alt="University of South Florida" class="edu-img" />
-            <div>
-              <h3>Master of Science – Business Analytics &amp; AI</h3>
-              <p><em>University of South Florida – Pursuing | GPA: 3.8/4.0</em></p>
-            </div>
-          </div>
-        </article>
-
-        <article class="card edu-card reveal">
-          <div class="card-body edu-body">
-            <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" />
-            <div>
-              <h3>B.E. – Computer Science &amp; Engineering</h3>
-              <p><em>Stanley College, Osmania University – Graduated Jul 2019 | GPA: 3.5/4.0</em></p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certs" class="section alt">
-      <div class="container">
-        <h2>Certifications</h2>
-        <ul class="cert-list">
-          <li>Tableau Certified Data Analyst – DataCamp</li>
-          <li>Snowflake Associate Certification</li>
-          <li>SQL Fundamentals – DataCamp</li>
-          <li>Data Visualization – TCS</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contact</h2>
-        <p>Best ways to reach me:</p>
-        <ul class="contact-list">
-          <li>📧 <a href="mailto:shimrran05@gmail.com">shimrran05@gmail.com</a></li>
-          <li>🔗 <a href="https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li>💻 <a href="https://github.com/Simrananjanarajput" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Simran Anjana Rajput · 
-      <a href="https://github.com/Simrananjanarajput" target="_blank" rel="noopener">GitHub</a> · 
-      <a href="https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
-  </footer>
-
-  <!-- Small script: button glow follows cursor + reveal-on-scroll -->
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Button spotlight effect
-    document.addEventListener('pointermove', e=>{
-      document.querySelectorAll('.btn').forEach(btn=>{
-        const r = btn.getBoundingClientRect();
-        btn.style.setProperty('--x', (e.clientX - r.left) + 'px');
-        btn.style.setProperty('--y', (e.clientY - r.top) + 'px');
-      });
-    });
-
-    // Reveal on scroll (respect reduced motion)
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(!prefersReduced && 'IntersectionObserver' in window){
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(ent => { if(ent.isIntersecting){ ent.target.classList.add('in'); obs.unobserve(ent.target);} });
-      }, {threshold:.08});
-      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-    } else {
-      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-    }
-  </script>
-</body>
-</html>
+              using <strong>SQL
