@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simran Anjana Rajput – Portfolio</title>
   <meta name="description" content="Projects in data pipelines (MongoDB→Azure, PostgreSQL), analytics, and ML APIs by Simran Anjana Rajput." />
+  <link rel="canonical" href="https://simrananjanarajput.github.io/portfolio-srajput/" />
 
   <!-- Performance -->
   <link rel="preload" as="image" href="simran.jpg" imagesrcset="simran.jpg" />
   <link rel="icon" type="image/jpeg" href="simran.jpg" />
-
-  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Open Graph / Twitter (good for LinkedIn previews too) -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Simran Anjana Rajput – Business & Data Analyst Portfolio">
   <meta property="og:description" content="Projects in data pipelines (MongoDB→Azure, PostgreSQL), analytics, and ML APIs.">
   <meta property="og:type" content="website">
@@ -25,26 +24,14 @@
 
   <!-- Structured data -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Simran Anjana Rajput",
-    "jobTitle":"Business & Data Analyst",
-    "url":"https://simrananjanarajput.github.io/portfolio-srajput/",
-    "image":"https://simrananjanarajput.github.io/portfolio-srajput/simran.jpg",
-    "sameAs":[
-      "https://github.com/Simrananjanarajput",
-      "https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/"
-    ]
-  }
+  {"@context":"https://schema.org","@type":"Person","name":"Simran Anjana Rajput","jobTitle":"Business & Data Analyst","url":"https://simrananjanarajput.github.io/portfolio-srajput/","image":"https://simrananjanarajput.github.io/portfolio-srajput/simran.jpg","sameAs":["https://github.com/Simrananjanarajput","https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/"]}
   </script>
 
   <style>
     :root{
-      --bg:#0b1020; --bg2:#0a0f1f; --bg3:#090e1c;
-      --bg-alt:#0e1428; --card:#121a36; --text:#e9ecf6;
-      --muted:#a7acc0; --accent:#7aa2ff; --accent2:#a17dff; --border:#2a3054;
-      --shadow:0 12px 28px rgba(0,0,0,.35);
+      --bg:#0b1020; --bg2:#0a0f1f; --bg3:#090e1c; --bg-alt:#0e1428;
+      --card:#121a36; --text:#e9ecf6; --muted:#a7acc0; --border:#2a3054;
+      --accent:#7aa2ff; --accent2:#a17dff; --shadow:0 12px 28px rgba(0,0,0,.35);
     }
     /* Light theme (toggle or system) */
     :root[data-theme="light"]{
@@ -53,11 +40,7 @@
       --accent:#006747; --accent2:#cfc493; /* USF-ish */
     }
     @media (prefers-color-scheme: light){
-      :root:not([data-theme]){
-        --bg:#f7f8fc; --bg2:#ffffff; --bg3:#f2f4fb; --bg-alt:#f0f3ff;
-        --card:#ffffff; --text:#0f1220; --muted:#5b627a; --border:#e5e8f6;
-        --accent:#006747; --accent2:#cfc493;
-      }
+      :root:not([data-theme]){ --bg:#f7f8fc; --bg2:#ffffff; --bg3:#f2f4fb; --bg-alt:#f0f3ff; --card:#ffffff; --text:#0f1220; --muted:#5b627a; --border:#e5e8f6; --accent:#006747; --accent2:#cfc493; }
     }
 
     *{box-sizing:border-box}
@@ -72,166 +55,97 @@
         linear-gradient(180deg,var(--bg),var(--bg2) 60%, var(--bg3));
       animation:bgShift 36s ease-in-out infinite alternate;
     }
-    @keyframes bgShift{
-      0%{background-position: 0 0, 0 0, 0 0;}
-      100%{background-position: -5% -2%, 6% 3%, 0 20%;}
-    }
-    .container{max-width:1100px;margin:0 auto;padding:0 1.1rem}
-    section{scroll-margin-top:84px;} /* anchor offset */
+    @keyframes bgShift{ 0%{background-position:0 0,0 0,0 0} 100%{background-position:-5% -2%, 6% 3%, 0 20%} }
 
-    /* Scroll progress bar */
-    .progress {
-      position: fixed; top: 0; left: 0; height: 4px; width: 0%;
-      background: linear-gradient(90deg,var(--accent),var(--accent2));
-      z-index: 100; box-shadow: 0 0 10px rgba(122,162,255,.8);
-      transition: width .1s ease;
-    }
+    .container{max-width:1100px;margin:0 auto;padding:0 1.1rem}
+    section{scroll-margin-top:84px;}
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+    /* Scroll progress */
+    .progress{position:fixed;top:0;left:0;height:4px;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:100;box-shadow:0 0 10px rgba(122,162,255,.8);transition:width .1s ease}
+
+    /* Skip link */
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:12px;top:12px;width:auto;height:auto;padding:.5rem .75rem;background:#fff;color:#000;border-radius:8px;z-index:9999}
 
     /* Header / nav */
-    .site-header{
-      position:sticky;top:0;z-index:50; backdrop-filter:saturate(180%) blur(10px);
-      background:rgba(10,14,28,.65); border-bottom:1px solid var(--border)
-    }
-    :root[data-theme="light"] .site-header{ background:rgba(255,255,255,.7) }
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:rgba(10,14,28,.65);border-bottom:1px solid var(--border)}
+    :root[data-theme="light"] .site-header{background:rgba(255,255,255,.7)}
     .nav{display:flex;gap:1rem 1.2rem;align-items:center;justify-content:center;padding:.85rem;flex-wrap:wrap}
-    .nav a{
-      position:relative; text-decoration:none; color:var(--text); opacity:.92; font-weight:600;
-      letter-spacing:.2px; padding:.35rem .2rem; transition:opacity .2s ease;
-      font-family:Poppins,Inter,system-ui,sans-serif;
-    }
-    .nav a::after{
-      content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
-      transform:scaleX(0); transform-origin:left;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      transition:transform .25s ease; border-radius:2px;
-    }
+    .nav a{position:relative;text-decoration:none;color:var(--text);opacity:.92;font-weight:600;letter-spacing:.2px;padding:.35rem .2rem;transition:opacity .2s}
+    .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:transform .25s;border-radius:2px}
     .nav a:hover{opacity:1}
     .nav a:hover::after{transform:scaleX(1)}
-    .btn-toggle{
-      border:1px solid var(--border); background:transparent; color:var(--text);
-      padding:.4rem .75rem; border-radius:999px; cursor:pointer; font-weight:600;
-      transition:transform .15s ease, border-color .25s ease;
-    }
-    .btn-toggle:hover{transform:translateY(-1px); border-color:var(--accent)}
+    .btn-toggle{border:1px solid var(--border);background:transparent;color:var(--text);padding:.4rem .75rem;border-radius:999px;cursor:pointer;font-weight:600;transition:transform .15s,border-color .25s}
+    .btn-toggle:hover{transform:translateY(-1px);border-color:var(--accent)}
 
     /* Sections / headings */
     .section{padding:4rem 0}
-    .section.alt{background:var(--bg-alt); border-block:1px solid var(--border)}
-    h1,h2,h3{line-height:1.2;margin:0 0 .7rem; font-family:Poppins,Inter,sans-serif}
+    .section.alt{background:var(--bg-alt);border-block:1px solid var(--border)}
+    h1,h2,h3{line-height:1.2;margin:0 0 .7rem;font-family:Poppins,Inter,sans-serif}
     h1{font-size:2.15rem} h2{font-size:1.7rem} h3{font-size:1.2rem}
     p{margin:.45rem 0} .muted{color:var(--muted)}
     .accent{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    h2{ position:relative; display:inline-block; padding-bottom:.25rem; }
-    h2::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:3px; width:72px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      border-radius:2px; box-shadow:0 2px 8px rgba(122,162,255,.4);
-    }
+    h2{position:relative;display:inline-block;padding-bottom:.25rem}
+    h2::after{content:"";position:absolute;left:0;bottom:-6px;height:3px;width:72px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;box-shadow:0 2px 8px rgba(122,162,255,.4)}
 
     /* Cards */
-    .card{
-      background:
-        linear-gradient(#0000,#0000) padding-box,
-        linear-gradient(120deg, rgba(122,162,255,.45), rgba(161,125,255,.4)) border-box;
-      border:1px solid transparent; border-radius:18px; margin:1rem 0;
-      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
-      will-change:transform;
-    }
-    .card:hover{transform:translateY(-6px); box-shadow:0 18px 46px rgba(0,0,0,.5); filter:saturate(110%)}
+    .card{background:linear-gradient(#0000,#0000) padding-box, linear-gradient(120deg, rgba(122,162,255,.45), rgba(161,125,255,.4)) border-box; border:1px solid transparent;border-radius:18px;margin:1rem 0;box-shadow:var(--shadow);transition:transform .25s, box-shadow .25s, filter .25s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 46px rgba(0,0,0,.5);filter:saturate(110%)}
     .card-body{padding:1.15rem}
     .bullets{margin:.5rem 0 .25rem 1.2rem}
     .bullets li{margin:.25rem 0}
 
     /* Buttons */
     .links{display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:wrap}
-    .btn{
-      position:relative; display:inline-block; text-decoration:none; color:var(--text); font-weight:700;
-      border:1px solid var(--accent); padding:.5rem .85rem; border-radius:12px; overflow:hidden;
-      transition:transform .15s ease,border-color .25s ease,background .25s ease;
-    }
-    .btn::before{
-      content:""; position:absolute; inset:-2px;
-      background:radial-gradient(220px 90px at var(--x,50%) var(--y,50%), rgba(122,162,255,.22), transparent 42%);
-      opacity:0; transition:opacity .2s ease;
-    }
-    .btn:hover{transform:translateY(-1px); border-color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .btn{position:relative;display:inline-block;text-decoration:none;color:var(--text);font-weight:700;border:1px solid var(--accent);padding:.5rem .85rem;border-radius:12px;overflow:hidden;transition:transform .15s,border-color .25s,background .25s}
+    .btn::before{content:"";position:absolute;inset:-2px;background:radial-gradient(220px 90px at var(--x,50%) var(--y,50%), rgba(122,162,255,.22), transparent 42%);opacity:0;transition:opacity .2s}
+    .btn:hover{transform:translateY(-1px);border-color:transparent;background:linear-gradient(90deg,var(--accent),var(--accent2))}
     .btn:hover::before{opacity:1}
     .btn.ghost{border-color:var(--border)}
     .btn.ghost:hover{border-color:transparent}
 
     /* About */
-    .about-card{
-      display:grid; grid-template-columns:180px 1fr; gap:1.1rem; align-items:center;
-      background:var(--card); border:1px solid var(--border); border-radius:18px; padding:1.1rem;
-      box-shadow:var(--shadow); overflow:hidden;
-    }
-    .avatar{
-      width:180px; height:180px; border-radius:50%; object-fit:cover; border:2px solid var(--border);
-      box-shadow:0 4px 14px rgba(0,0,0,.35); animation:float 8s ease-in-out infinite;
-    }
-    @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    .about-card{display:grid;grid-template-columns:180px 1fr;gap:1.1rem;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.1rem;box-shadow:var(--shadow);overflow:hidden}
+    .avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:2px solid var(--border);box-shadow:0 4px 14px rgba(0,0,0,.35);animation:float 8s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     .links-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
 
     /* Skills */
     .pill-grid{display:flex;flex-wrap:wrap;gap:.55rem;margin:.4rem 0 1.1rem}
-    .pill{
-      border:1px solid var(--border); padding:.4rem .7rem; border-radius:999px;
-      background:rgba(255,255,255,.02); position:relative; overflow:hidden; cursor:default;
-      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-      backdrop-filter:saturate(120%);
-    }
-    .pill::after{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(120deg, rgba(122,162,255,.14), rgba(161,125,255,.14), transparent 60%);
-      opacity:0; transition:opacity .25s ease;
-    }
-    .pill:hover{
-      transform:translateY(-1px) scale(1.02); border-color:rgba(122,162,255,.6);
-      box-shadow:0 6px 16px rgba(122,162,255,.18);
-    }
+    .pill{border:1px solid var(--border);padding:.4rem .7rem;border-radius:999px;background:rgba(255,255,255,.02);position:relative;overflow:hidden;cursor:default;transition:transform .15s, box-shadow .2s, border-color .2s;backdrop-filter:saturate(120%)}
+    .pill::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg, rgba(122,162,255,.14), rgba(161,125,255,.14), transparent 60%);opacity:0;transition:opacity .25s}
+    .pill:hover{transform:translateY(-1px) scale(1.02);border-color:rgba(122,162,255,.6);box-shadow:0 6px 16px rgba(122,162,255,.18)}
     .pill:hover::after{opacity:1}
+
+    /* Filters */
+    #projFilters .pill[aria-pressed="true"]{border-color:transparent;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff}
 
     /* Education */
     .edu-card{display:flex;flex-direction:row;align-items:center;margin-bottom:1rem}
     .edu-body{display:flex;align-items:center;gap:1rem}
-    .edu-img{
-      max-width:150px; max-height:100px; height:auto; width:auto; object-fit:contain;
-      border-radius:6px; border:1px solid var(--border); box-shadow:0 2px 6px rgba(0,0,0,.2);
-      background:#fff; padding:4px;
-    }
+    .edu-img{max-width:150px;max-height:100px;height:auto;width:auto;object-fit:contain;border-radius:6px;border:1px solid var(--border);box-shadow:0 2px 6px rgba(0,0,0,.2);background:#fff;padding:4px}
 
     /* Footer */
     .site-footer{padding:2rem 0;text-align:center;color:var(--muted);border-top:1px solid var(--border)}
 
-    /* Reveal on scroll */
-    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.in{opacity:1; transform:translateY(0)}
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s, transform .6s}
+    .reveal.in{opacity:1;transform:translateY(0)}
 
-    /* Print styles */
-    @media print{
-      .site-header, .nav, .site-footer, .links-row a { display:none !important; }
-      body{ background:#fff; color:#000; }
-      .card, .about-card{ border:1px solid #000 !important; box-shadow:none !important; }
-    }
+    /* Print */
+    @media print{ .site-header,.nav,.site-footer,.links-row a,#toTop,#projFilters{display:none!important} body{background:#fff;color:#000} .card,.about-card{border:1px solid #000!important;box-shadow:none!important} }
 
     /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important}
-      html{scroll-behavior:auto}
-      .reveal{opacity:1; transform:none}
-      .progress{display:none}
-    }
+    @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} html{scroll-behavior:auto} .reveal{opacity:1;transform:none} .progress{display:none} }
 
     /* Responsive */
-    @media (max-width:720px){
-      .about-card{grid-template-columns:1fr}
-      .avatar{width:140px;height:140px;justify-self:center}
-      h1{font-size:1.85rem}
-    }
+    @media (max-width:720px){ .about-card{grid-template-columns:1fr} .avatar{width:140px;height:140px;justify-self:center} h1{font-size:1.85rem} }
   </style>
 </head>
 <body>
   <div class="progress" id="progress"></div>
+  <a href="#about" class="skip">Skip to content</a>
 
   <!-- Header / Navigation -->
   <header class="site-header">
@@ -252,23 +166,17 @@
     <section id="about" class="section">
       <div class="container">
         <div class="about-card reveal">
-          <img class="avatar" src="simran.jpg" alt="Simran Anjana Rajput" />
+          <img class="avatar" src="simran.jpg" alt="Simran Anjana Rajput" decoding="async" />
           <div>
             <h1>Hi, I’m <span class="accent">Simran Anjana Rajput</span> 👋</h1>
-            <p>
-              I’m a <strong>Business & Data Analyst</strong> with 4+ years of experience
-              bridging business needs and technology solutions across healthcare,
-              technology, and cloud domains. I translate requirements into
-              <strong>automated reporting, ETL pipelines, and clear dashboards</strong>
-              using <strong>SQL, Python, Tableau, Power BI, and Snowflake</strong>.
-            </p>
-            <p class="muted">
-              Currently pursuing a <strong>Master’s in Business Analytics & AI</strong> at the University of South Florida.
-            </p>
+            <p>I’m a <strong>Business & Data Analyst</strong> with 4+ years of experience bridging business needs and technology solutions across healthcare, technology, and cloud domains. I translate requirements into <strong>automated reporting, ETL pipelines, and clear dashboards</strong> using <strong>SQL, Python, Tableau, Power BI, and Snowflake</strong>.</p>
+            <p class="muted">Currently pursuing a <strong>Master’s in Business Analytics & AI</strong> at the University of South Florida.</p>
             <div class="links-row">
-              <a class="btn" href="mailto:shimrran05@gmail.com">Email</a>
+              <a class="btn" href="mailto:shimrran05@gmail.com" id="emailBtn">Email</a>
               <a class="btn ghost" href="https://github.com/Simrananjanarajput" target="_blank" rel="noopener">GitHub</a>
               <a class="btn ghost" href="https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn" href="Analyst_Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+              <button class="btn ghost" id="printBtn" type="button">Print to PDF</button>
             </div>
           </div>
         </div>
@@ -336,67 +244,60 @@
       <div class="container">
         <h2>Projects</h2>
 
-        <article class="card reveal">
+        <!-- Filters -->
+        <div class="pill-grid" id="projFilters" aria-label="Filter projects">
+          <button class="pill" data-filter="all" aria-pressed="true">All</button>
+          <button class="pill" data-filter="ml">ML / API</button>
+          <button class="pill" data-filter="pipelines">Pipelines</button>
+          <button class="pill" data-filter="viz">Dashboards</button>
+        </div>
+
+        <article class="card reveal" data-tags="ml">
           <div class="card-body">
             <h3>Product Profitability Modeling</h3>
             <p>Logistic regression to classify product profitability; cleaned historical data and visualized drivers in Tableau.</p>
-            <ul class="bullets">
-              <li>Stack: Python (Pandas, scikit-learn), Tableau, SQL</li>
-              <li>Outcome: Enabled pricing teams to make margin-focused decisions.</li>
-            </ul>
+            <p><span class="pill">Python</span> <span class="pill">scikit-learn</span> <span class="pill">Tableau</span></p>
             <div class="links">
               <a class="btn" href="https://github.com/Simrananjanarajput/product-profitability" target="_blank" rel="noopener">Repo</a>
             </div>
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card reveal" data-tags="ml">
           <div class="card-body">
             <h3>Sentiment Analysis API (Real-Time)</h3>
             <p>FastAPI service with a simple CNN for customer feedback classification; supports product roadmap prioritization.</p>
-            <ul class="bullets">
-              <li>Stack: Python, FastAPI, CNN, AWS EC2</li>
-              <li>Outcome: Faster triage of user feedback and trend detection.</li>
-            </ul>
+            <p><span class="pill">Python</span> <span class="pill">FastAPI</span> <span class="pill">AWS</span></p>
             <div class="links">
               <a class="btn" href="https://github.com/Simrananjanarajput/sentiment-api" target="_blank" rel="noopener">Repo</a>
             </div>
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card reveal" data-tags="pipelines">
           <div class="card-body">
             <h3>MongoDB → Azure Data Pipeline</h3>
             <p>Designed and implemented a secure pipeline to migrate and back up MongoDB data into Azure Blob Storage with automation.</p>
-            <ul class="bullets">
-              <li>Stack: MongoDB, Azure VM, Azure Blob Storage, Python, Bash</li>
-              <li>Outcome: Automated daily backups with retention policy, ensuring compliance and faster recovery.</li>
-            </ul>
+            <p><span class="pill">MongoDB</span> <span class="pill">Azure</span> <span class="pill">Python</span></p>
             <div class="links">
               <a class="btn" href="https://github.com/Simrananjanarajput/mongodb-azure-pipeline" target="_blank" rel="noopener">Repo</a>
             </div>
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card reveal" data-tags="viz">
           <div class="card-body">
             <h3>Education &amp; AI Policy Dashboard</h3>
             <p>Integrated cross-country education policy datasets; built dashboards to visualize AI policy rollouts and adoption gaps.</p>
-            <ul class="bullets">
-              <li>Stack: SQL (Teradata), Python, Power BI, Tableau</li>
-              <li>Outcome: Supported academic and policy research insights.</li>
-            </ul>
+            <p><span class="pill">SQL</span> <span class="pill">Power BI</span> <span class="pill">Tableau</span></p>
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card reveal" data-tags="pipelines">
           <div class="card-body">
             <h3>PostgreSQL Data Pipeline</h3>
             <p>Built an automated PostgreSQL → Azure pipeline for data backups and reporting, with secure transfer and monitoring.</p>
-            <ul class="bullets">
-              <li>Stack: PostgreSQL, pg_dump, Azure Storage, Python, AzCopy</li>
-              <li>Outcome: Enabled reliable daily backups and simplified reporting for analytics teams.</li>
-            </ul>
+            <p><span class="pill">PostgreSQL</span> <span class="pill">pg_dump</span> <span class="pill">AzCopy</span></p>
             <div class="links">
               <a class="btn" href="https://github.com/Simrananjanarajput/postgresql-pipeline" target="_blank" rel="noopener">Repo</a>
             </div>
@@ -470,7 +371,7 @@
 
         <article class="card edu-card reveal">
           <div class="card-body edu-body">
-            <img src="usf.jpg" alt="University of South Florida" class="edu-img" loading="lazy" />
+            <img src="usf.jpg" alt="University of South Florida" class="edu-img" loading="lazy" decoding="async" />
             <div>
               <h3>Master of Science – Business Analytics &amp; AI</h3>
               <p><em>University of South Florida – Pursuing | GPA: 3.8/4.0</em></p>
@@ -480,7 +381,7 @@
 
         <article class="card edu-card reveal">
           <div class="card-body edu-body">
-            <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" loading="lazy" />
+            <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" loading="lazy" decoding="async" />
             <div>
               <h3>B.E. – Computer Science &amp; Engineering</h3>
               <p><em>Stanley College, Osmania University – Graduated Jul 2019 | GPA: 3.5/4.0</em></p>
@@ -509,7 +410,7 @@
         <h2>Contact</h2>
         <p>Best ways to reach me:</p>
         <ul class="contact-list">
-          <li>📧 <a href="mailto:shimrran05@gmail.com">shimrran05@gmail.com</a></li>
+          <li>📧 <a id="emailLink" href="mailto:shimrran05@gmail.com">shimrran05@gmail.com</a> <button class="btn ghost" id="copyEmail" type="button">Copy</button></li>
           <li>🔗 <a href="https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/" target="_blank" rel="noopener">LinkedIn</a></li>
           <li>💻 <a href="https://github.com/Simrananjanarajput" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
@@ -524,12 +425,15 @@
     </p>
   </footer>
 
-  <!-- JS: year, theme, cursor glow, reveal on scroll, scroll progress -->
+  <!-- Back to Top -->
+  <button id="toTop" aria-label="Back to top" class="btn" style="position:fixed; right:18px; bottom:18px; display:none; z-index:60; opacity:.95;">↑ Top</button>
+
+  <!-- JS: year, theme, cursor glow, reveal, progress, filters, utilities -->
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme: load saved or system; toggle on click
+    // Theme: saved or system; toggle on click
     const root = document.documentElement;
     const saved = localStorage.getItem('theme');
     if(saved){ root.setAttribute('data-theme', saved); }
@@ -548,31 +452,52 @@
       });
     });
 
-    // Reveal on scroll (respect reduced motion)
+    // Reveal on scroll (reduced motion friendly)
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!prefersReduced && 'IntersectionObserver' in window){
       const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(ent => {
-          if(ent.isIntersecting){
-            ent.target.classList.add('in');
-            obs.unobserve(ent.target);
-          }
-        });
+        entries.forEach(ent => { if(ent.isIntersecting){ ent.target.classList.add('in'); obs.unobserve(ent.target);} });
       }, {threshold:.08});
       document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
     } else {
       document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
     }
 
-    // Scroll progress bar
+    // Scroll progress + Back to top
     const progress = document.getElementById('progress');
+    const toTop = document.getElementById('toTop');
     const setProgress = () => {
       const h = document.documentElement;
       const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
       progress.style.width = (scrolled * 100) + '%';
+      toTop.style.display = (h.scrollTop > 600) ? 'inline-block' : 'none';
     };
-    document.addEventListener('scroll', setProgress, {passive:true});
-    setProgress();
+    document.addEventListener('scroll', setProgress, {passive:true}); setProgress();
+    toTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Project filter
+    const filterBar = document.getElementById('projFilters');
+    if (filterBar) {
+      const cards = Array.from(document.querySelectorAll('#projects .card'));
+      filterBar.addEventListener('click', e => {
+        const btn = e.target.closest('[data-filter]'); if (!btn) return;
+        filterBar.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        const f = btn.dataset.filter;
+        cards.forEach(c => {
+          const tags = (c.dataset.tags || '').split(',').map(s=>s.trim());
+          const show = (f === 'all') || tags.includes(f);
+          c.style.display = show ? '' : 'none';
+        });
+      });
+    }
+
+    // Print & copy helpers
+    document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+    document.getElementById('copyEmail')?.addEventListener('click', async () => {
+      try{ await navigator.clipboard.writeText('shimrran05@gmail.com'); alert('Email copied!'); }
+      catch(e){ alert('Copy failed.'); }
+    });
   </script>
 </body>
 </html>
