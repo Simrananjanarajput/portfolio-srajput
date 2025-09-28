@@ -4,12 +4,40 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simran Anjana Rajput – Portfolio</title>
-  <meta name="description" content="Professional portfolio of Simran Anjana Rajput – Business & Data Analyst" />
+  <meta name="description" content="Projects in data pipelines (MongoDB→Azure, PostgreSQL), analytics, and ML APIs by Simran Anjana Rajput." />
+
+  <!-- Performance -->
+  <link rel="preload" as="image" href="simran.jpg" imagesrcset="simran.jpg" />
+  <link rel="icon" type="image/jpeg" href="simran.jpg" />
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Open Graph / Twitter (good for LinkedIn previews too) -->
+  <meta property="og:title" content="Simran Anjana Rajput – Business & Data Analyst Portfolio">
+  <meta property="og:description" content="Projects in data pipelines (MongoDB→Azure, PostgreSQL), analytics, and ML APIs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://simrananjanarajput.github.io/portfolio-srajput/">
+  <meta property="og:image" content="https://simrananjanarajput.github.io/portfolio-srajput/simran.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Simran Anjana Rajput",
+    "jobTitle":"Business & Data Analyst",
+    "url":"https://simrananjanarajput.github.io/portfolio-srajput/",
+    "image":"https://simrananjanarajput.github.io/portfolio-srajput/simran.jpg",
+    "sameAs":[
+      "https://github.com/Simrananjanarajput",
+      "https://www.linkedin.com/in/simran-anjana-rajput-9b4834353/"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -18,8 +46,20 @@
       --muted:#a7acc0; --accent:#7aa2ff; --accent2:#a17dff; --border:#2a3054;
       --shadow:0 12px 28px rgba(0,0,0,.35);
     }
+    /* Light theme (toggle or system) */
+    :root[data-theme="light"]{
+      --bg:#f7f8fc; --bg2:#ffffff; --bg3:#f2f4fb; --bg-alt:#f0f3ff;
+      --card:#ffffff; --text:#0f1220; --muted:#5b627a; --border:#e5e8f6;
+      --accent:#006747; --accent2:#cfc493; /* USF-ish */
+    }
+    @media (prefers-color-scheme: light){
+      :root:not([data-theme]){
+        --bg:#f7f8fc; --bg2:#ffffff; --bg3:#f2f4fb; --bg-alt:#f0f3ff;
+        --card:#ffffff; --text:#0f1220; --muted:#5b627a; --border:#e5e8f6;
+        --accent:#006747; --accent2:#cfc493;
+      }
+    }
 
-    /* base */
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -31,16 +71,15 @@
         radial-gradient(1000px 700px at 110% 10%, rgba(161,125,255,.12), transparent 60%),
         linear-gradient(180deg,var(--bg),var(--bg2) 60%, var(--bg3));
       animation:bgShift 36s ease-in-out infinite alternate;
-      background-size: 100% 100%;
     }
     @keyframes bgShift{
       0%{background-position: 0 0, 0 0, 0 0;}
       100%{background-position: -5% -2%, 6% 3%, 0 20%;}
     }
     .container{max-width:1100px;margin:0 auto;padding:0 1.1rem}
-    section{scroll-margin-top:84px;}
+    section{scroll-margin-top:84px;} /* anchor offset */
 
-    /* scroll progress */
+    /* Scroll progress bar */
     .progress {
       position: fixed; top: 0; left: 0; height: 4px; width: 0%;
       background: linear-gradient(90deg,var(--accent),var(--accent2));
@@ -48,12 +87,13 @@
       transition: width .1s ease;
     }
 
-    /* header / nav */
+    /* Header / nav */
     .site-header{
       position:sticky;top:0;z-index:50; backdrop-filter:saturate(180%) blur(10px);
       background:rgba(10,14,28,.65); border-bottom:1px solid var(--border)
     }
-    .nav{display:flex;gap:1.2rem;align-items:center;justify-content:center;padding:.85rem}
+    :root[data-theme="light"] .site-header{ background:rgba(255,255,255,.7) }
+    .nav{display:flex;gap:1rem 1.2rem;align-items:center;justify-content:center;padding:.85rem;flex-wrap:wrap}
     .nav a{
       position:relative; text-decoration:none; color:var(--text); opacity:.92; font-weight:600;
       letter-spacing:.2px; padding:.35rem .2rem; transition:opacity .2s ease;
@@ -67,17 +107,20 @@
     }
     .nav a:hover{opacity:1}
     .nav a:hover::after{transform:scaleX(1)}
+    .btn-toggle{
+      border:1px solid var(--border); background:transparent; color:var(--text);
+      padding:.4rem .75rem; border-radius:999px; cursor:pointer; font-weight:600;
+      transition:transform .15s ease, border-color .25s ease;
+    }
+    .btn-toggle:hover{transform:translateY(-1px); border-color:var(--accent)}
 
-    /* sections / headings */
+    /* Sections / headings */
     .section{padding:4rem 0}
     .section.alt{background:var(--bg-alt); border-block:1px solid var(--border)}
     h1,h2,h3{line-height:1.2;margin:0 0 .7rem; font-family:Poppins,Inter,sans-serif}
     h1{font-size:2.15rem} h2{font-size:1.7rem} h3{font-size:1.2rem}
     p{margin:.45rem 0} .muted{color:var(--muted)}
-    .accent{
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text; background-clip:text; color:transparent
-    }
+    .accent{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
     h2{ position:relative; display:inline-block; padding-bottom:.25rem; }
     h2::after{
       content:""; position:absolute; left:0; bottom:-6px; height:3px; width:72px;
@@ -85,13 +128,13 @@
       border-radius:2px; box-shadow:0 2px 8px rgba(122,162,255,.4);
     }
 
-    /* cards */
+    /* Cards */
     .card{
       background:
         linear-gradient(#0000,#0000) padding-box,
         linear-gradient(120deg, rgba(122,162,255,.45), rgba(161,125,255,.4)) border-box;
       border:1px solid transparent; border-radius:18px; margin:1rem 0;
-      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
+      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
       will-change:transform;
     }
     .card:hover{transform:translateY(-6px); box-shadow:0 18px 46px rgba(0,0,0,.5); filter:saturate(110%)}
@@ -99,7 +142,7 @@
     .bullets{margin:.5rem 0 .25rem 1.2rem}
     .bullets li{margin:.25rem 0}
 
-    /* buttons */
+    /* Buttons */
     .links{display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:wrap}
     .btn{
       position:relative; display:inline-block; text-decoration:none; color:var(--text); font-weight:700;
@@ -116,7 +159,7 @@
     .btn.ghost{border-color:var(--border)}
     .btn.ghost:hover{border-color:transparent}
 
-    /* about */
+    /* About */
     .about-card{
       display:grid; grid-template-columns:180px 1fr; gap:1.1rem; align-items:center;
       background:var(--card); border:1px solid var(--border); border-radius:18px; padding:1.1rem;
@@ -129,7 +172,7 @@
     @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
     .links-row{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
 
-    /* skills */
+    /* Skills */
     .pill-grid{display:flex;flex-wrap:wrap;gap:.55rem;margin:.4rem 0 1.1rem}
     .pill{
       border:1px solid var(--border); padding:.4rem .7rem; border-radius:999px;
@@ -148,7 +191,7 @@
     }
     .pill:hover::after{opacity:1}
 
-    /* education images */
+    /* Education */
     .edu-card{display:flex;flex-direction:row;align-items:center;margin-bottom:1rem}
     .edu-body{display:flex;align-items:center;gap:1rem}
     .edu-img{
@@ -157,14 +200,21 @@
       background:#fff; padding:4px;
     }
 
-    /* footer */
+    /* Footer */
     .site-footer{padding:2rem 0;text-align:center;color:var(--muted);border-top:1px solid var(--border)}
 
-    /* reveal on scroll */
+    /* Reveal on scroll */
     .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
     .reveal.in{opacity:1; transform:translateY(0)}
 
-    /* prefers-reduced-motion */
+    /* Print styles */
+    @media print{
+      .site-header, .nav, .site-footer, .links-row a { display:none !important; }
+      body{ background:#fff; color:#000; }
+      .card, .about-card{ border:1px solid #000 !important; box-shadow:none !important; }
+    }
+
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       *{animation:none !important; transition:none !important}
       html{scroll-behavior:auto}
@@ -172,7 +222,7 @@
       .progress{display:none}
     }
 
-    /* responsive */
+    /* Responsive */
     @media (max-width:720px){
       .about-card{grid-template-columns:1fr}
       .avatar{width:140px;height:140px;justify-self:center}
@@ -193,6 +243,7 @@
       <a href="#education">Education</a>
       <a href="#certs">Certifications</a>
       <a href="#contact">Contact</a>
+      <button id="themeToggle" class="btn-toggle" aria-label="Toggle color theme">🌓 Theme</button>
     </nav>
   </header>
 
@@ -419,7 +470,7 @@
 
         <article class="card edu-card reveal">
           <div class="card-body edu-body">
-            <img src="usf.jpg" alt="University of South Florida" class="edu-img" />
+            <img src="usf.jpg" alt="University of South Florida" class="edu-img" loading="lazy" />
             <div>
               <h3>Master of Science – Business Analytics &amp; AI</h3>
               <p><em>University of South Florida – Pursuing | GPA: 3.8/4.0</em></p>
@@ -429,7 +480,7 @@
 
         <article class="card edu-card reveal">
           <div class="card-body edu-body">
-            <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" />
+            <img src="stanley.jpg" alt="Stanley College, Osmania University" class="edu-img" loading="lazy" />
             <div>
               <h3>B.E. – Computer Science &amp; Engineering</h3>
               <p><em>Stanley College, Osmania University – Graduated Jul 2019 | GPA: 3.5/4.0</em></p>
@@ -473,10 +524,20 @@
     </p>
   </footer>
 
-  <!-- JS: year, cursor glow, reveal on scroll, scroll progress -->
+  <!-- JS: year, theme, cursor glow, reveal on scroll, scroll progress -->
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme: load saved or system; toggle on click
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved){ root.setAttribute('data-theme', saved); }
+    document.getElementById('themeToggle').onclick = () => {
+      const next = root.getAttribute('data-theme') === 'light' ? '' : 'light';
+      if(next){ root.setAttribute('data-theme', 'light'); localStorage.setItem('theme','light'); }
+      else { root.removeAttribute('data-theme'); localStorage.removeItem('theme'); }
+    };
 
     // Button spotlight (cursor-follow)
     document.addEventListener('pointermove', e=>{
